@@ -23,6 +23,7 @@ jobs:
       permissions:
          contents: read
          packages: write
+         id-token: write
       steps:
          - uses: actions/checkout@v4
            with:
@@ -31,7 +32,7 @@ jobs:
          - name: Log in to the Container registry
            uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d
            with:
-              registry: ${{ env.REGISTRY }}
+              registry: ghcr.io
               username: ${{ github.actor }}
               password: ${{ secrets.GITHUB_TOKEN }}
          - name: Build image
